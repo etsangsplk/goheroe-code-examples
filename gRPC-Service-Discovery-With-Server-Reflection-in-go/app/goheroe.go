@@ -27,7 +27,7 @@ func (server GoHeroeServer) List(ctx context.Context, filter *superpower.Filter)
 	if filter.Category == 0 {
 		return &superpower.SuperPowers{SuperPow: heroes}, nil
 	}
-	return &superpower.SuperPowers{SuperPow: FilterHeores(heroes, func(heroe *superpower.SuperPower) bool { return heroe.Cat == filter.Category })}, nil
+	return &superpower.SuperPowers{SuperPow: filterHeores(heroes, func(heroe *superpower.SuperPower) bool { return heroe.Cat == filter.Category })}, nil
 }
 
 // Add super power
@@ -36,10 +36,10 @@ func (server GoHeroeServer) Add(ctx context.Context, heroe *superpower.SuperPowe
 	return &superpower.SuperPowers{SuperPow: heroes}, nil
 }
 
-type filterCategory func(*superpower.SuperPower) bool
+type filterOnSuperPower func(*superpower.SuperPower) bool
 
 // FilterHeores (slice, predicate func)
-func FilterHeores(in []*superpower.SuperPower, fn filterCategory) []*superpower.SuperPower {
+func filterHeores(in []*superpower.SuperPower, fn filterOnSuperPower) []*superpower.SuperPower {
 	out := make([]*superpower.SuperPower, 0)
 	for _, current := range in {
 		if fn(current) {
