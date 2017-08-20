@@ -1,3 +1,4 @@
+//go:generate protoc -I ../../proto --go_out=plugins=grpc:../../proto ../../proto/goheroe.proto
 package main
 
 import (
