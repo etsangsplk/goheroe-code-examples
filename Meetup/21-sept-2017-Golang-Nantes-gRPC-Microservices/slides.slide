@@ -1,0 +1,59 @@
+gRPC microservices is the future ?
+Build scalable gRPC services with go deployed on GKE
+
+Golang Nantes Meetup
+21 September 2017
+
+Cyrille Hemidy
+[[https://LivingPackets.com][LivingPackets]]
+
+@chemidy
+[[https://www.goheroe.org][+GoHeroe]]
+
+
+* Hello Gophers!
+
+.image gopher.jpg 512 _
+
+* Agenda
+
+
+* Small Agenda
+
+- Introduction
+- What is gRPC ?
+- What is Protocol Buffers ?
+- History
+- REST vs THRIFT vs gRPC
+- Develop gRPC microservices with Go
+- Call gRPC services on Mobile (IOS,Android)
+- Call gRPC services on BackOffice
+- Manage local microservices
+- Deploy microservices on GKE
+- Conclusion
+
+* Introduction
+
+* What is gRPC ?
+.image grpc.png 320 _
+
+* What is Protocol Buffers ?
+* History
+
+- 2012 : [[https://developers.google.com/protocol-buffers/][Protocol Buffers]]
+- [[https://static.googleusercontent.com/media/research.google.com/fr//pubs/archive/43438.pdf][Borg]] => Large-scale cluster management => 2015 : [[https://kubernetes.io/][Kubernetes]]
+- [[https://cloudplatform.googleblog.com/2016/08/gRPC-a-true-Internet-scale-RPC-framework-is-now-1-and-ready-for-production-deployments.html][Stubby]] => A high performance RPC framework => 2016 : [[https://grpc.io/][gRPC]]
+- One Platform => Develop, deploy, protect and monitor APIs => [[https://cloud.google.com/endpoints/][Google Endpoints]]
+- Sept 2016 : Swift-protobuf
+
+* REST vs THRIFT vs gRPC
+* Develop gRPC microservices with Go
+* Demo
+* Call gRPC services on Mobile (IOS,Android)
+* Call gRPC services on BackOffice
+* Manage local microservices
+* Demo
+* Deploy microservices on GKE
+* Demo
+* Conclusion
+* Q & A
