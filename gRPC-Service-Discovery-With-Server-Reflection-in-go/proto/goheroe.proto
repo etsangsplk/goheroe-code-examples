@@ -4,87 +4,84 @@ package superpower;
 
 // Interface exported by the server.
 service GoHeroe {
-    rpc List(Filter) returns (SuperPowers) {}
-    rpc Add(SuperPower) returns (SuperPowers) {}
+  rpc List(Filter) returns (SuperPowers) {}
+  rpc Add(SuperPower) returns (SuperPowers) {}
 }
 
-// List from http://powerlisting.wikia.com/wiki/Category:Main_Categories?display=page&sort=mostvisited
+// List from
+// http://powerlisting.wikia.com/wiki/Category:Main_Categories?display=page&sort=mostvisited
 enum SuperPowerCategory {
-    option allow_alias = true;
-    All = 0;
+  option allow_alias = true;
+  All = 0;
 
-    Absorption = 200;
-    Absorption1Alias = 200;
-    Absorption2Alias = 200;
-    Absorption3Alias = 200;
-    Absorption4Alias = 200;
-    Affinity = 201;
-    AppearanceAlteration = 202;
-    ArchetypalPowers = 203;
+  Absorption = 200;
+  Absorption1Alias = 200;
+  Absorption2Alias = 200;
+  Absorption3Alias = 200;
+  Absorption4Alias = 200;
+  Affinity = 201;
+  AppearanceAlteration = 202;
+  ArchetypalPowers = 203;
 
-    BodilyFunctionalPowers = 300;
+  BodilyFunctionalPowers = 300;
 
-    CellularManipulation = 401;
-    Combinations = 402;
-    ConceptualPowers = 403;
-    CosmicBasedPowers = 404;
-    CrossoverPowers = 405;
+  CellularManipulation = 401;
+  Combinations = 402;
+  ConceptualPowers = 403;
+  CosmicBasedPowers = 404;
+  CrossoverPowers = 405;
 
-    DeathbasedAbilities = 500;    
-    DemonicPowers = 501;
+  DeathbasedAbilities = 500;
+  DemonicPowers = 501;
 
-    ElementalManipulation = 600;
-    Empowerments = 601;
-    Econt = 602;
-    Enhancements = 603;
+  ElementalManipulation = 600;
+  Empowerments = 601;
+  Econt = 602;
+  Enhancements = 603;
 
-    FundamentalForces = 700;
+  FundamentalForces = 700;
 
-    Intuition = 800;
+  Intuition = 800;
 
-    MagicalPowers = 000;
-    Manipulations = 901;
-    MetaPowers = 902;
-    Mimicry = 903;
-    MolecularManipulation = 904;
-    MythologicalMimicry = 905;
+  MagicalPowers = 000;
+  Manipulations = 901;
+  MetaPowers = 902;
+  Mimicry = 903;
+  MolecularManipulation = 904;
+  MythologicalMimicry = 905;
 
-    Negation = 1000;
-    NonFightingPower = 1001;
+  Negation = 1000;
+  NonFightingPower = 1001;
 
-    ObjectbasedPowers = 1100;
-    OmnipotentPowers =  1101;
-    Omniversepowers = 1102;
+  ObjectbasedPowers = 1100;
+  OmnipotentPowers = 1101;
+  Omniversepowers = 1102;
 
-    PersonalPhysicalPowers = 1200;
-    PhysicsBasedPowers = 1201;
-    Physiology = 1202;
-    Powerwithnoknownuser = 1203;
-    PrimordialPowers = 1204;
+  PersonalPhysicalPowers = 1200;
+  PhysicsBasedPowers = 1201;
+  Physiology = 1202;
+  Powerwithnoknownuser = 1203;
+  PrimordialPowers = 1204;
 
-    SciencePowers = 1300;
-    SensoryPowers = 1301;
-    SpiritualPowers = 1302;
-    SupernaturalPowers = 1303;
-    SuperpowerManipulation = 1304;
+  SciencePowers = 1300;
+  SensoryPowers = 1301;
+  SpiritualPowers = 1302;
+  SupernaturalPowers = 1303;
+  SuperpowerManipulation = 1304;
 
-    TechnologybasedPowers = 1400;
-    TranscendentPowers = 1401;
-  }
+  TechnologybasedPowers = 1400;
+  TranscendentPowers = 1401;
+}
 
 // A SuperPower is so cool
 message SuperPower {
-    string name = 1;
-    SuperPowerCategory cat = 2; 
-    bool  coolPow = 3;
+  string name = 1;
+  SuperPowerCategory cat = 2;
+  bool coolPow = 3;
 }
 
 // A List of so cool SuperPower
-message SuperPowers {
-    repeated SuperPower superPow = 1;
-}
+message SuperPowers { repeated SuperPower superPow = 1; }
 
 // An optional Filter just for fun
-message Filter {
-    SuperPowerCategory category = 1;
-  }
+message Filter { SuperPowerCategory category = 1; }

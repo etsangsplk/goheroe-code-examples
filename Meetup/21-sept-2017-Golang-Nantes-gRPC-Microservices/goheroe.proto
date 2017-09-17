@@ -1,0 +1,17 @@
+syntax = "proto3";
+package superpower;
+
+service GoHeroe {
+  rpc List(Filter) returns (SuperPowers) {}
+  rpc Add(SuperPower) returns (SuperPowers) {}
+}
+
+message SuperPower {
+  string name = 1;
+  SuperPowerCategory cat = 2;
+  bool coolPow = 3;
+}
+
+message SuperPowers { repeated SuperPower superPow = 1; }
+
+message Filter { SuperPowerCategory category = 1; }

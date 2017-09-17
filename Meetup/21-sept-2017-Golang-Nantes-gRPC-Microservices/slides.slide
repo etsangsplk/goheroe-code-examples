@@ -1,59 +1,120 @@
-gRPC microservices is the future ?
-Build scalable gRPC services with go deployed on GKE
+gRPC microservices are the future ?
+Build scalable gRPC services with go deployed to GKE
 
 Golang Nantes Meetup
 21 September 2017
 
 Cyrille Hemidy
-[[https://LivingPackets.com][LivingPackets]]
+[[http://LivingPackets.com][LivingPackets]]
 
 @chemidy
-[[https://www.goheroe.org][+GoHeroe]]
+[[http://www.goheroe.org][+GoHeroe]]
 
-
-* Hello Gophers!
-
+* Hello Gophers
 .image gopher.jpg 512 _
 
 * Agenda
-
-
-* Small Agenda
-
-- Introduction
-- What is gRPC ?
-- What is Protocol Buffers ?
-- History
+- What are microservices, gRPC, Protocol Buffers ?
+- A little bit of history
 - REST vs THRIFT vs gRPC
 - Develop gRPC microservices with Go
-- Call gRPC services on Mobile (IOS,Android)
-- Call gRPC services on BackOffice
+- Use gRPC microservices with (IOS, Android, Angular)
 - Manage local microservices
 - Deploy microservices on GKE
+- Manage API with Cloud Endpoints
 - Conclusion
 
-* Introduction
+* Let's dive into gRPC microservices ecosystem
+.image crazy.jpg 512 _
+
+* What are microservices ?
+.image architecture.png 484 _
+- See [[https://www.youtube.com/watch?v=lRDgOpsV2zA][Microservices are the Future (And Always Will Be)  - Josh Holtzman, PayPal]]
+
+* Monolithic VS microservices ?
+.image microservices.png 384 _
+
+- See [[http://netflix.github.io/][Netflix Open Source Software Center]]
+- See [[https://github.com/Netflix/Hystrix][Hystrix is a latency and fault tolerance library stop cascading failure]]
+- See [[https://github.com/Netflix/ribbon][Ribbon is a Inter Process Communication (remote procedure calls) library]]
+
+* A little bit of history
+- 2011 : [[https://developers.google.com/protocol-buffers/][Protocol Buffers 2]] => language neutral for serializing structured data
+- 2015 : [[https://static.googleusercontent.com/media/research.google.com/fr//pubs/archive/43438.pdf][Borg]] => Large-scale cluster management => [[https://kubernetes.io/][Kubernetes]]
+- 2015 : [[https://cloudplatform.googleblog.com/2016/08/gRPC-a-true-Internet-scale-RPC-framework-is-now-1-and-ready-for-production-deployments.html][Stubby]] => A high performance RPC framework => [[https://grpc.io/][gRPC]]
+- July 2016 : Protocol Buffers 3.0.0
+- Aug 2016 : gRPC 1.0 ready for production
+- Sept 2016 : [[https://github.com/apple/swift-protobuf][Swift-protobuf]]
+- Jan 2017 : [[https://github.com/grpc/grpc-swift][Grpc Swift]]
+- Apr 2017 : [[https://cloud.google.com/endpoints/][Google Endpoints]] => Manage gRPC APIs with Cloud Endpoints
+- Sept 2017 : gRPC 1.6.1
+- Sept 2017 : Protocol Buffers 3.4.1
+
 
 * What is gRPC ?
-.image grpc.png 320 _
+.image grpc.png 192 _
+- High performance, open-source RPC (Remote Procedure Call) framework that uses Google Protocol Buffers as the IDL (Interface Description Language)
+- Actively developed and production ready
+- Current Version is 1.6.1
+
+* gRPC speak a lot of languages
+
+- C/C++
+- Java
+- Python
+- Ruby 
+- Node.js
+- C#
+- Go
+- PHP 
+- Objective-C
+- Swift (in progress)
+
+* gRPC lets you define 4 kinds of service
+- *Unary* : client sends a single request and gets a single response
+- *Server* *streaming* : client sends a request and gets a stream of messages
+- *Client* *streaming* : client sends a stream of messages and gets a single response
+- *Bidirectional* *streaming* :  both sides send a sequence of messages using a read-write stream. The two streams operate independently. The order of messages in each stream is preserved
+
+
+* gRPC Interoperability
+.image landing.svg 512 _
+
+* gRPC is designed for future
+
+- HTTP/2 for transport (Multiplexing, Header Compression, Binary framing)
+- Design for fault tolerance (Deadlines, Cancellations)
+- Very fast and efficient Protobuf serialization
+- Interceptors on client and server
+- Tracing
+- ...
+
+- See [[http://bit.ly/grpcmeetings][gRPC Community Meeting Working Doc / RoadMap]]
+
 
 * What is Protocol Buffers ?
-* History
 
-- 2012 : [[https://developers.google.com/protocol-buffers/][Protocol Buffers]]
-- [[https://static.googleusercontent.com/media/research.google.com/fr//pubs/archive/43438.pdf][Borg]] => Large-scale cluster management => 2015 : [[https://kubernetes.io/][Kubernetes]]
-- [[https://cloudplatform.googleblog.com/2016/08/gRPC-a-true-Internet-scale-RPC-framework-is-now-1-and-ready-for-production-deployments.html][Stubby]] => A high performance RPC framework => 2016 : [[https://grpc.io/][gRPC]]
-- One Platform => Develop, deploy, protect and monitor APIs => [[https://cloud.google.com/endpoints/][Google Endpoints]]
-- Sept 2016 : Swift-protobuf
+- Protocol buffers are Google's language-neutral, platform-neutral, flexible, efficient, extensible mechanism for serializing structured data
+.code goheroe.proto
+
+
+- See [[http://www.golangdevops.com/2017/08/16/why-not-to-use-protos-in-code/][Protocol buffers: Avoid these uses]]
+
+
 
 * REST vs THRIFT vs gRPC
+* Whos is using gRPC ?
+- Google, Kubernetes, Cisco, Docker, ...
+.image use_grpc.png 512 _
+
+
 * Develop gRPC microservices with Go
-* Demo
+* gRPC microservices are the future ?
 * Call gRPC services on Mobile (IOS,Android)
 * Call gRPC services on BackOffice
 * Manage local microservices
-* Demo
-* Deploy microservices on GKE
-* Demo
+* Demo Edward
+* Deploy gRPC microservices on GKE
+- See [[https://www.youtube.com/watch?v=YiNt4kUnnIM] [Building high performance microservices with Kubernetes, Go, and gRPC (Google Cloud Next '17)]]
 * Conclusion
 * Q & A
