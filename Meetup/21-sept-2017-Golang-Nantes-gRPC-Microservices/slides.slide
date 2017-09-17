@@ -50,7 +50,6 @@ Cyrille Hemidy
 - Sept 2017 : gRPC 1.6.1
 - Sept 2017 : Protocol Buffers 3.4.1
 
-
 * What is gRPC ?
 .image grpc.png 192 _
 - High performance, open-source RPC (Remote Procedure Call) framework that uses Google Protocol Buffers as the IDL (Interface Description Language)
@@ -58,7 +57,6 @@ Cyrille Hemidy
 - Current Version is 1.6.1
 
 * gRPC speak a lot of languages
-
 - C/C++
 - Java
 - Python
@@ -76,29 +74,27 @@ Cyrille Hemidy
 - *Client* *streaming* : client sends a stream of messages and gets a single response
 - *Bidirectional* *streaming* :  both sides send a sequence of messages using a read-write stream. The two streams operate independently. The order of messages in each stream is preserved
 
-
 * gRPC Interoperability
 .image landing.svg 512 _
 
 * gRPC is designed for future
-
 - HTTP/2 for transport (Multiplexing, Header Compression, Binary framing)
 - Design for fault tolerance (Deadlines, Cancellations)
 - Very fast and efficient Protobuf serialization
 - Interceptors on client and server
 - Tracing
 - ...
-
 - See [[http://bit.ly/grpcmeetings][gRPC Community Meeting Working Doc / RoadMap]]
 
-
 * What is Protocol Buffers ?
-
 - Protocol buffers are Google's language-neutral, platform-neutral, flexible, efficient, extensible mechanism for serializing structured data
 .code goheroe.proto
-
-
 - See [[http://www.golangdevops.com/2017/08/16/why-not-to-use-protos-in-code/][Protocol buffers: Avoid these uses]]
+
+* gRPC gateway
+- grpc-gateway is a plugin of protoc. It reads gRPC service definition, and generates a reverse-proxy server which translates a RESTful JSON API into gRPC
+.image grpc_gateway.png 384 _
+- See [[https://github.com/grpc-ecosystem/grpc-gateway][Go grpc-gateway : gRPC to JSON proxy generator]]
 
 
 
