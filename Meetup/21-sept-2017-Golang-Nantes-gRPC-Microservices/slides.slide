@@ -14,7 +14,7 @@ Cyrille Hemidy
 * Hello Gophers
 .image gopher.jpg 512 _
 
-* Agenda
+* Summary
 - What are microservices, gRPC, Protocol Buffers ?
 - A little bit of history
 - REST vs gRPC
@@ -121,15 +121,6 @@ Cyrille Hemidy
 
 * gRPC microservices are the future ?
 .background cover.jpg
-- Yes !!!
-- Yes !!!
-- Yes !!!
-- Yes !!!
-- Yes !!!
-- Yes !!!
-- Yes !!!
-- Yes !!!
-- Yes !!!
 - Yes !!!
 - Yes !!!
 - Yes !!!
