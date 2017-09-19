@@ -151,6 +151,12 @@ Cyrille Hemidy
 * Demo Edward
 .image vscode.png 512 _
 
+* Cloud endpoints
+.image grpc-endpoints.png 512 _
+
+* Deploy Cloud endpoints
+
+
 * Deploy gRPC microservices on GKE
 
 * Demo K8
