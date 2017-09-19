@@ -115,6 +115,10 @@ Cyrille Hemidy
 - no cascade failure vs [[https://landing.google.com/sre/book/chapters/addressing-cascading-failures.html][cascade failure addressed]]
 - N/A vs Tracing, Metadata
 
+* REST vs gRPC performance
+.image rest_vs_grpc.png 484 _
+- See [[https://public.tableau.com/profile/sandeep.dinesh#!/vizhome/gRPCvsREST-2016/gRPCvsRest][gRPC vs REST - Go vs node.js]]
+
 * Whos is using gRPC ?
 - Google, Kubernetes, Cisco, Docker, ...
 .image use_grpc.png 512 _
@@ -125,15 +129,23 @@ Cyrille Hemidy
 - Yes !!!
 - Yes !!!
 
-* Develop gRPC microservices with Go
-
+* Develop gRPC microservices with Go Workflow
+.image dev_grpc.png 512 _
 - See Book [[https://www.amazon.fr/Building-Microservices-Go-Nic-Jackson/dp/1786468662][Building Microservices with Go]]
+
+* Define services and messages
+
+* Generate code with protoc
+
+* Implement gRPC server
+
+* Implement gRPC client
 
 * Demo
 .image vscode.png 512 _
 
-* Call gRPC services on Mobile (IOS,Android)
-* Call gRPC services on BackOffice
+* Call gRPC services from Mobile (IOS,Android)
+* Call gRPC services from Angular with a gateway
 * Manage local microservices
 - Edward
 * Demo Edward
