@@ -1,6 +1,10 @@
 syntax = "proto3";
 package superpower;
 
+option java_package = "com.package.protobuf";
+option java_multiple_files = true;
+option optimize_for = LITE_RUNTIME;
+
 service GoHeroe {
   rpc List(Filter) returns (SuperPowers) {}
   rpc Add(SuperPower) returns (SuperPowers) {}
@@ -13,5 +17,4 @@ message SuperPower {
 }
 
 message SuperPowers { repeated SuperPower superPow = 1; }
-
 message Filter { SuperPowerCategory category = 1; }

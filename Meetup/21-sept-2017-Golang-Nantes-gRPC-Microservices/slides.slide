@@ -14,12 +14,16 @@ Cyrille Hemidy
 * Hello Gophers
 .image gopher.jpg 512 _
 
-* Summary
+* @work
+.image livingpackets.png 484 _
+- See [[https://www.livingpackets.com/en][LivingPackets.com]]
+
+* Agenda
 - What are microservices, gRPC, Protocol Buffers ?
 - A little bit of history
 - REST vs gRPC
 - Develop gRPC microservices with Go
-- Use gRPC microservices with (IOS, Android, Angular)
+- Call gRPC microservices with (IOS, Android, Angular)
 - Manage local microservices
 - Deploy microservices on GKE
 - Manage API with Cloud Endpoints
@@ -57,6 +61,7 @@ Cyrille Hemidy
 - High performance, open-source RPC (Remote Procedure Call) framework that uses Google Protocol Buffers as the IDL (Interface Description Language)
 - Actively developed and production ready
 - Current Version is 1.6.1
+- See [[https://grpc.io/][gRPC.io]]
 
 * gRPC speaks a lot of languages
 - C/C++
@@ -80,6 +85,8 @@ Cyrille Hemidy
 .image landing.svg 512 _
 
 * gRPC is designed for future
+- Open source
+- plugins
 - HTTP/2 for transport (Multiplexing, Header Compression, Binary framing)
 - Design for fault tolerance (Deadlines, Cancellations)
 - Very fast and efficient Protobuf serialization
@@ -92,11 +99,6 @@ Cyrille Hemidy
 - Protocol buffers are Google's language-neutral, platform-neutral, flexible, efficient, extensible mechanism for serializing structured data
 .code goheroe.proto
 - See [[http://www.golangdevops.com/2017/08/16/why-not-to-use-protos-in-code/][Protocol buffers: Avoid these uses]]
-
-* gRPC gateway
-- grpc-gateway is a plugin of protoc. It reads gRPC service definition, and generates a reverse-proxy server which translates a RESTful JSON API into gRPC
-.image grpc_gateway.png 384 _
-- See [[https://github.com/grpc-ecosystem/grpc-gateway][Go grpc-gateway : gRPC to JSON proxy generator]]
 
 * REST vs gRPC
 - JSON  vs PROTO 
@@ -134,34 +136,89 @@ Cyrille Hemidy
 - See Book [[https://www.amazon.fr/Building-Microservices-Go-Nic-Jackson/dp/1786468662][Building Microservices with Go]]
 
 * Define services and messages
+.code goheroe.proto
+- See  [[https://developers.google.com/protocol-buffers/docs/proto3][proto3 Language Guide]]
 
 * Generate code with protoc
 
+- Generate Go code with protoc
+ protoc -I ./proto/ ./proto/goheroe.proto --go_out=plugins=grpc:proto
+
+- Generate Swift code with protoc
+ protoc -I . backend*.proto \
+ --proto_path=${GOPATH}/src \
+ --swift_out=../api/swift \
+ --swiftgrpc_out=../api/swift \
+ --swift_opt=Visibility=Public
+
+- Generate Java code with protoc
+ protoc -I . backend*.proto \
+ --proto_path=${GOPATH}/src \
+ --plugin=protoc-gen-javalite=$(GOPATH)/bin/protoc-gen-javalite \
+ --plugin=protoc-gen-grpc-java=$(GOPATH)/bin/protoc-gen-grpc-java \
+ --grpc-java_out=lite:../api/lpGrpc.jar \
+ --javalite_out=../api/lpGrpc.jar 
+
+* gRPC server
+.code main.go
+
 * Implement gRPC server
+.code server.go
 
 * Implement gRPC client
+.code client.go
 
-* Demo
+
+* Demo protoc
 .image vscode.png 512 _
 
 * Call gRPC services from Mobile (IOS,Android)
+.code hello.java
+
+- See [[https://grpc.io/docs/tutorials/basic/android.html][gRPC doc for android]]
+- See [[https://github.com/grpc/grpc-java/tree/v1.6.x/examples/android][Hello World for android]]
+
+
 * Call gRPC services from Angular with a gateway
+- grpc-gateway is a plugin of protoc. It reads gRPC service definition, and generates a reverse-proxy server which translates a RESTful JSON API into gRPC
+.image grpc_gateway.png 384 _
+- See [[https://github.com/grpc-ecosystem/grpc-gateway][Go grpc-gateway : gRPC to JSON proxy generator]]
+
+
 * Manage local microservices
-- Edward
+- Edward is a very nice tool to manage a large amount of microservices with automatically rebuild on edit.
+- A quick list of features :
+ - Start multiple services (group)
+ - Restart a service or multiple services
+ - Check status of running services
+ - Check logs of running services
+ - Auto-generate service configuration for: go / Docker
+ - Auto-restart on 
+ 
+- See [[https://github.com/yext/edward][Edward Github]]
+- See [[http://engblog.yext.com/edward/][Edward docs]]
+
 * Demo Edward
 .image vscode.png 512 _
 
-* Cloud endpoints
-.image grpc-endpoints.png 512 _
-
-* Deploy Cloud endpoints
-
-
 * Deploy gRPC microservices on GKE
+.background cover2.jpg
+.image crazy.jpg 1 _
+
+* Cloud endpoints
+.image endpoints_arch.png 512 _
+
+* Build Docker images
+- todo
+
+* Deploy to GKE
+-todo
 
 * Demo K8
 .image vscode.png 484 _
 - See [[https://www.youtube.com/watch?v=YiNt4kUnnIM][Building high performance microservices with Kubernetes, Go, and gRPC]]
 
 * Conclusion
+.background conclusion.jpg
+.image crazy.jpg 1 _
 * Q & A
