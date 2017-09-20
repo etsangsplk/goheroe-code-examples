@@ -169,7 +169,6 @@ Cyrille Hemidy
 * Implement gRPC client
 .code client.go
 
-
 * Demo protoc
 .image vscode.png 512 _
 
@@ -179,12 +178,10 @@ Cyrille Hemidy
 - See [[https://grpc.io/docs/tutorials/basic/android.html][gRPC doc for android]]
 - See [[https://github.com/grpc/grpc-java/tree/v1.6.x/examples/android][Hello World for android]]
 
-
 * Call gRPC services from Angular with a gateway
 - grpc-gateway is a plugin of protoc. It reads gRPC service definition, and generates a reverse-proxy server which translates a RESTful JSON API into gRPC
 .image grpc_gateway.png 384 _
 - See [[https://github.com/grpc-ecosystem/grpc-gateway][Go grpc-gateway : gRPC to JSON proxy generator]]
-
 
 * Manage local microservices
 - Edward is a very nice tool to manage a large amount of microservices with automatically rebuild on edit.
@@ -209,11 +206,59 @@ Cyrille Hemidy
 * Cloud endpoints
 .image endpoints_arch.png 512 _
 
+* Deploy endpoints
+
+- Generate config file
+	protoc -I proto --include_imports --include_source_info back.proto --descriptor_set_out out.pb
+
+- Deploy Google Endpoint
+	gcloud service-management deploy endpoints.pb ../config/endpoints/api_config.yaml
+
+- api_config.yaml
+ type: google.api.Service
+ config_version: 3
+ name: hello.endpoints.my_google_project.cloud.goog
+ title: auth gRPC API
+ apis:
+ - name: api.Hello
+ usage:
+  rules:
+  # Allow unregistered calls for all methods.
+  - selector: "*"
+    allow_unregistered_calls: true
+
 * Build Docker images
-- todo
+- Build image and push to gc.io
+	gcloud container builds submit . \
+	--config=config/docker/cloudbuild.yaml \
+	--substitutions _VERSION=${V},_SERVICE=${S}
+- cloudbuild.yaml
+ steps:
+ - name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-f', 'config/docker/Dockerfile.${_SERVICE}', 
+  '-t', 'gcr.io/$PROJECT_ID/go-grpc-${_SERVICE}:${_VERSION}', '.']
+  dir: '.'
+  images: ['gcr.io/$PROJECT_ID/go-grpc-${_SERVICE}:${_VERSION}']
+ 
 
 * Deploy to GKE
--todo
+- deploy Load Balancer
+  kubectl create -f myconfig.yaml
+- lb.yaml
+  apiVersion: v1
+ kind: Service
+ metadata:
+  name: lb-grpc-hello
+ spec:
+  type: LoadBalancer
+  loadBalancerIP: 118.218.118.218
+  ports:
+  - name: http
+    port: 80
+    targetPort: 9000
+    protocol: TCP
+  selector:
+    app: grpc-hello
 
 * Demo K8
 .image vscode.png 484 _
