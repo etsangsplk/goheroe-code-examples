@@ -27,6 +27,7 @@ Cyrille Hemidy
 - Manage local microservices
 - Deploy microservices on GKE
 - Manage API with Cloud Endpoints
+- Build Docker images 
 - Conclusion
 
 * Let's dive into gRPC microservices ecosystem
