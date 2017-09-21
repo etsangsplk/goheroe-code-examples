@@ -1,0 +1,14 @@
+type: google.api.Service
+config_version: 3
+
+name: goheroe.endpoints.nantes-kubernetes-demo.cloud.goog
+
+title: GoHeroe gRPC API
+apis:
+- name: superpower.GoHeroe
+
+usage:
+  rules:
+  # Allow unregistered calls for all methods.
+  - selector: "*"
+    allow_unregistered_calls: true

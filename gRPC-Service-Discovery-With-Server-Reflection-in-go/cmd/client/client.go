@@ -11,7 +11,7 @@ import (
 
 func main() {
 	// Set up a connection to the gRPC server.
-	conn, err := grpc.Dial("localhost:44444", grpc.WithInsecure())
+	conn, err := grpc.Dial(":6666", grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}

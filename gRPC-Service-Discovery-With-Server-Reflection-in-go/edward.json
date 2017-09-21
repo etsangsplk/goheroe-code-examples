@@ -1,0 +1,12 @@
+{
+    "services": [
+        {
+            "name": "server",
+            "path": "cmd/server",
+            "commands": {
+                "build": "go install",
+                "launch": "server"
+            }
+        }
+    ]
+}

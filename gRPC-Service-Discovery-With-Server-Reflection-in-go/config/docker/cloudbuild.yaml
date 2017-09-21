@@ -1,0 +1,7 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-f', 'config/docker/Dockerfile.${_SERVICE}', '-t', 'gcr.io/$PROJECT_ID/go-grpc-${_SERVICE}:${_VERSION}', '.']
+  dir: '.'
+
+images: ['gcr.io/$PROJECT_ID/go-grpc-${_SERVICE}:${_VERSION}']
+ 

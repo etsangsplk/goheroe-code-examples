@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	grpcPort = ":44444"
+	grpcPort = ":6666"
 )
 
 func main() {
